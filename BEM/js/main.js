@@ -1,7 +1,7 @@
 const items = [
     ["Otrivin neusspray",7.39,"img/otrivin_neusspray.png","otrivin neusspray",true],
     ["Kruidvat tissues",1.49,"img/kruidvat_tissues.png","tissues",true],
-    ["Vicks vaporub",10.14,"img/vicks_vaporub.png","vicks vaporub",true]]
+    ["Vicks vaporub",10.14,"img/vicks_vaporub.png","vicks vaporub",true]];
 
 let itemCount = 0;
 
