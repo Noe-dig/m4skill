@@ -1,0 +1,177 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+h1{
+    color: white;
+    font-weight: 900;
+    font-size: 5rem;
+    max-height: 5rem;
+}
+
+body{
+    height: 100vh;
+    background: white;
+
+}
+    header{
+        height: 15vh;
+        width: 100vw;
+        background-color: rgb(0, 0, 20);
+        text-align: center;
+        color: white;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        position: fixed;
+    }
+        header > div{
+            margin-top: 3rem;
+        }
+        .shop-name{
+            grid-column: 2/3;
+        }
+            .winkelmandje{
+                min-width: 7.5rem;
+                max-width: 7.5rem;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(4, 1fr);                
+                margin-right: 10rem;
+                font-size: 7.5rem;
+                background: none;
+                border: none;
+                position: relative;
+            }
+            #winkelmandjeContent{
+                background: #eee;
+                box-shadow: 1rem 1rem 1rem 0 rgba(50,50,50,0.4);
+                position: absolute;
+                border-radius: 1.2rem;
+                display:none;
+                margin-top: 7.5rem;
+                list-style-type: none;
+                margin-left: -10rem;
+                min-width: 40rem;
+                max-width: 40rem;
+            }
+            .winkelmandje:hover #winkelmandjeContent{
+                display: block;
+            }
+                li{ 
+                    height: 4rem;
+                    font-size: 2.5rem; 
+                    background-color: white;
+                    padding: 0.5rem;
+                    margin: 1rem;
+                    border-radius: 1.2rem;
+                }
+            .tissuebox{
+                min-width: 7.5rem;
+                max-width: 7.5rem;
+                grid-column: 1/4;
+                grid-row: 1/4;
+            }
+                .tissuebox__itemCount{
+                    grid-column: 3/4;
+                    grid-row: 2/3;
+                    border-radius: 50%;
+                    border: 4px solid black;
+                    background-color: red;
+                    height: 1.875rem;
+                    width: 1.875rem;
+                    position:fixed;
+                    float: right;
+                    color: white;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                }
+
+    main{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 2rem;
+    }
+        .cards__shop-item--leverbaar, .cards__shop-item--onleverbaar{
+            height: 60vh;
+            width: 25vw;
+            margin-top: 2rem;
+            border-radius: 1.2rem;
+            background: white;
+            box-shadow: 1rem 1rem 1rem 0 rgba(50,50,50,0.4);
+            margin-top: 30vh;
+        }
+        .cards__shop-item--leverbaar{
+            border: 2px solid #aaa;
+        }
+        .cards__shop-item--onleverbaar{
+            border: 2px dotted #aaa;
+            color: #ccc;
+        }
+        .cards__shop-item--leverbaar > div, .cards__shop-item--onleverbaar > div{
+            padding: 15%;
+            display: flex;
+            flex-direction: column;
+        }
+            figure{
+                margin-left: 20%;
+            }
+            img{
+                max-width: 70%;
+            }
+            figcaption{
+                font-size: 2rem;
+                font-weight: bold;
+            }
+            .cards__price{
+                margin-top: 5rem;
+                font-weight: 1000;
+                font-size: 4rem;
+            }
+            .addButton{
+                margin-top: 2.5rem;
+                background-color: #ccc;
+                border-radius: 1.2rem;
+                border: none;
+                height: 10rem;
+                font-size: 2rem;
+                font-weight: bold;
+                width:70%;
+            }
+            .addButton:hover{
+                cursor: pointer;
+                background-color: #ddd;
+            }
+            .removeButton{
+                background-color: #d00;
+                border-radius: 1.2rem;
+                border: none;
+                height: 10rem;
+                font-size: 2rem;
+                font-weight: bold;  
+                width: 25%;
+            }
+            .removeButton:hover{
+                cursor:pointer;
+                background-color: #e00;
+            }
+
+        .cards__shop-item--onleverbaar > div > .button{
+            display: none;
+        }
+
+        .cards__shop-item1{
+            grid-column: 2/3;
+        } 
+    footer{
+        margin-top: 20rem;
+        height: 30rem;
+        background-color: #ddd;
+        width: 100vw;
+    }
+

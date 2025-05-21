@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/all.min.js"></script>
+    <script src="js/main.js" defer></script>
+    <title>BEM opdracht m4skill</title>
+</head>
+<body>
+    <header>    
+        <div class="shop-name">
+            <h1>SNEEZY</h1>
+        </div>
+        <div>
+            <button class="winkelmandje">
+                <img src="img/tissuebox.png" alt="uw winkelmandje" class="tissuebox">
+                <p class="tissuebox__itemCount" id="tissuebox__itemCount"></p>
+                <ul id="winkelmandjeContent">
+                </ul>
+            </button>
+        </div>
+    </header>
+    <main class="grid-container">
+        <div class="cards__shop-item--leverbaar cards__shop-item1" id="cards__shop-item0">
+            <div>
+                <p id="itemNaam"></p>
+                <figure>
+                    <img src="img/otrivin_neusspray.png" alt="Otrivin neusspray">
+                </figure>
+                <p class="cards__price">€7,39</p>
+                <div class="buttons">
+                    <input type="button" class="addButton" onclick="add1ToTissuebox()" value="stop in tissuebox">
+                    <button class="removeButton" onclick="remove1FromTissuebox()">
+                        <i class='fa-solid fa-trash-can'></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="cards__shop-item--leverbaar cards__shop-item2" id="cards__shop-item1">
+            <div>
+                <p id="itemNaam"></p>
+                <figure>
+                    <img src="img/kruidvat_tissues.png" alt="Kruidvat tissues, 200 stuks">
+                </figure>
+                <p class="cards__price">€1,49</p>
+                <div class="buttons">
+                    <input type="button" class="addButton" onclick="add2ToTissuebox()" value="stop in tissuebox">
+                    <button class="removeButton" onclick="remove2FromTissuebox()">
+                        <i class='fa-solid fa-trash-can'></i>
+                    </button>
+                </div>            
+            </div>
+        </div>
+        <div class="cards__shop-item--leverbaar cards__shop-item3" id="cards__shop-item2">
+            <div>
+                <p id="itemNaam"></p>
+                <figure>
+                    <img src="img/vicks_vaporub.png" alt="Vicks vaporub, 100 gram">
+                </figure>
+                <p class="cards__price">€10,14</p>
+                <div class="buttons">
+                    <input type="button" class="addButton" onclick="add3ToTissuebox()" value="stop in tissuebox">
+                    <button class="removeButton" onclick="remove3FromTissuebox()">
+                        <i class='fa-solid fa-trash-can'></i>
+                    </button>
+                </div>            
+            </div>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>
