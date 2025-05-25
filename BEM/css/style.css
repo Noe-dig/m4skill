@@ -16,9 +16,8 @@ h1{
 }
 
 body{
-    height: 100vh;
+    height: 100%;
     background: white;
-
 }
     header{
         height: 15vh;
@@ -29,12 +28,25 @@ body{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         position: fixed;
+        z-index: 20;
+        min-width: 80rem;
     }
         header > div{
             margin-top: 3rem;
         }
         .shop-name{
             grid-column: 2/3;
+        }
+        .newlink{
+            display: none;
+            height: 12rem;
+            width: 15rem;
+            position: absolute;
+            background: white;
+            font-size: 3rem;
+        }
+        .shop-name:hover .newlink{
+            display:block;
         }
             .winkelmandje{
                 min-width: 7.5rem;
@@ -91,11 +103,21 @@ body{
                     font-size: 1.5rem;
                     font-weight: 700;
                 }
-
+    .fill{
+        /* height: 100vh; */
+        width: 100%;
+        opacity:0;
+    }
     main{
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        overflow: scroll;  
+        justify-content: center;
         gap: 2rem;
+        min-width: 80rem;
+        opacity: 0;
     }
         .cards__shop-item--leverbaar, .cards__shop-item--onleverbaar{
             height: 60vh;
@@ -133,6 +155,9 @@ body{
                 font-weight: 1000;
                 font-size: 4rem;
             }
+            .cards__rating{
+                font-size: 2rem;
+            }
             .addButton{
                 margin-top: 2.5rem;
                 background-color: #ccc;
@@ -164,16 +189,7 @@ body{
         .cards__shop-item--onleverbaar > div > .button{
             display: none;
         }
-
-        .cards__shop-item1{
-            grid-column: 2/3;
-        } 
-        /* .cards__shop-item2{
-            grid-column: 3/4;
-        } 
-        .cards__shop-item3{
-            grid-column: 4/5;
-        }  */
+        
     footer{
         margin-top: 20rem;
         height: 30rem;
@@ -181,72 +197,75 @@ body{
         width: 100vw;
     }
 
+.a-popup{
+    animation-name: popup;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 @media only screen and (max-width: 1100px){
     header{
         grid-template-columns: repeat(2, 1fr);
     }
-    .shop-name{
-        grid-column: 1/2;
-    }
-    .winkelmandje{
-        grid-column: 3/4;
-        float:right;
-    }
-    main{
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-    }
-        .cards__shop-item1{
-            grid-column: 2/3;
-        } 
-        .cards__shop-item2{
+        .shop-name{
+            grid-column: 1/2;
+        }
+        .winkelmandje{
             grid-column: 3/4;
-        }         
-        .cards__shop-item3{
-            grid-column: 2/3;
-            grid-row: 2/2
-        } 
+            float:right;
+        }
+    main{
+        flex-direction:row;
+    }
+        .cards__shop-item--leverbaar, .cards__shop-item--onleverbaar{
+            width: 45%;
+            margin-top: 5rem;
+            height: 57.5rem;
+        }
+        #product_0, #product_1{
+            margin-top: 15rem;
+        }
+
 }
 
 @media only screen and (max-width: 800px){
     header{
         grid-template-columns: repeat(2, 1fr);
     }
-    .shop-name{
-        grid-column: 1/2;
-    }
-    .winkelmandje{
-        grid-column: 3/4;
-        float:right;
-    }
+        .shop-name{
+            grid-column: 1/2;
+        }
+        .winkelmandje{
+            grid-column: 3/4;
+            float:right;
+        }
+            #winkelmandjeContent{
+                left: -15rem;
+            }
 
     main{
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(3, 1fr);
+        flex-direction: column;
     }
-        .cards__shop-item1{
-            grid-column: 1/1;
-            grid-row: 1/1;
-        } 
-        #cards__shop-item0{
-            margin-top: 17.5rem;
-        }
-        .cards__shop-item2{
-            grid-column: 1/1;
-            grid-row: 2/2
-        }         
-        .cards__shop-item3{
-            grid-column: 1/1;
-            grid-row: 3/3
-        }
         .cards__shop-item--leverbaar, .cards__shop-item--onleverbaar{
-            margin-left: 12.5vw;
-            height: 70vh;
+            height: 75vh;
             width: 75vw;
-            margin-top: 2rem;
+            margin-top:2rem;
             border-radius: 1.2rem;
             background: white;
             box-shadow: 1rem 1rem 1rem 0 rgba(50,50,50,0.4);
         } 
+        #product_0{
+            margin-top: 15rem;
+        }
 }
 
+@keyframes popup{
+    from {
+        opacity: 0;
+        margin-top: 15rem;
+    }
+    to{
+        opacity: 1;
+    }
+}

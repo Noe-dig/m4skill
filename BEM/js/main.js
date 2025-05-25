@@ -1,85 +1,61 @@
 const items = [
-    ["Otrivin neusspray",7.39,"img/otrivin_neusspray.png","otrivin neusspray",true],
-    ["Kruidvat tissues",1.49,"img/kruidvat_tissues.png","tissues",true],
-    ["Vicks vaporub",10.14,"img/vicks_vaporub.png","vicks vaporub",true]];
+    ["Otrivin neusspray", 7.39, 4.2, "./img/otrivin_neusspray.png", "otrivin neusspray", true],
+    ["Kruidvat tissues", 1.49, 2.8, "./img/kruidvat_tissues.png", "tissues", true],
+    ["Vicks vaporub", 10.14, 5, "./img/vicks_vaporub.png", "vicks vaporub", true]];
+
 
 let itemCount = 0;
-
 itemCounter = document.getElementById("tissuebox__itemCount");
 
-for(let i = 0; i < items.length; i++){
-    if(items[i][4] === false){
+const productDummy = document.getElementsByClassName("cards__shop-item")[0];
+productDummy.remove();
+const productContainer = document.getElementsByClassName("grid-container")[0];
+
+
+for (let i = 0; i < items.length; i++) {
+    if (items[i][4] === false) {
         console.log(items[i][0] + " is onbeschikbaar");
-            var element = document.querySelector("#cards__shop-item" + i);
-            element.classList.replace("cards__shop-item--leverbaar", "cards__shop-item--onleverbaar");
+        var element = document.querySelector("#cards__shop-item" + i);
+        element.classList.replace("cards__shop-item--leverbaar", "cards__shop-item--onleverbaar");
     }
 }
-// function addToTissuebox(){
-//     for(let i = 0; i < items.length; i++){
-//         console.log("naam: ", items[i][0]);
-//         console.log("prijs: ", items[i][1]);
-//         console.log("beschrijving: ", items[i][3]);
-//         console.log("beschikbaar: ", items[i][4]);
-//         console.log("--------------------");
-//     }
-//     itemCount++;
-//     itemCounter.innerHTML = itemCount;
-// }
 
-function add1ToTissuebox(){
+items.forEach((product, i) => {
+    const clone = productDummy.cloneNode(true);
+    const productImage = clone.querySelector(".cards__product-image");
+    const productPrice = clone.querySelector(".cards__price");
+    const productRating = clone.querySelector(".cards__rating");
+    clone.setAttribute("id", "product_" + i);
+    productImage.setAttribute("src",product[3]);
+    productPrice.textContent = "€"+product[1];
+    productRating.textContent = product[2]+"/5";
+    const btn = clone.querySelector(".addButton");
+    btn.setAttribute('onclick','addToTissuebox('+i+')');
+    productContainer.appendChild(clone);
+    }
+)
+
+function addToTissuebox(i) {
     itemCount++;
     console.log(itemCount);
     itemCounter.innerHTML = itemCount;
-    console.log("naam: ", items[0][0]);
-    console.log("prijs: ", items[0][1]);
-    console.log("beschrijving: ", items[0][3]);
-    console.log("beschikbaar: ", items[0][4]);
+    console.log("naam: ", items[i][0]);
+    console.log("prijs: ", items[i][1]);
+    console.log("beschrijving: ", items[i][4]);
+    console.log("beschikbaar: ", items[i][5]);
     console.log("--------------------");
-    
+
     const li = document.createElement("li");
-    // const winkelmandjeContent = document.createTextNode("<img src='"+items[0][2]+"'>"+items[0][0]+"<button onclick='remove1FromCart()' class='remove1FromCart'>");
-    const winkelmandjeContent = document.createTextNode(items[0][0]);
+    const winkelmandjeContent = document.createTextNode(items[i][0]);
     li.appendChild(winkelmandjeContent);
     li.classList.add('item1');
     document.getElementById("winkelmandjeContent").appendChild(li);
 };
-function add2ToTissuebox(){
-    itemCount++;
-    console.log(itemCount);
-    itemCounter.innerHTML = itemCount;
-    console.log("naam: ", items[1][0]);
-    console.log("prijs: ", items[1][1]);
-    console.log("beschrijving: ", items[1][3]);
-    console.log("beschikbaar: ", items[1][4]);
-    console.log("--------------------");
-    
-    const li = document.createElement("li");
-    const winkelmandjeContent = document.createTextNode(items[1][0]);
-    li.appendChild(winkelmandjeContent);
-    li.classList.add('item2');
-    document.getElementById("winkelmandjeContent").appendChild(li);
-};
-function add3ToTissuebox(){
-    itemCount++;
-    console.log(itemCount);
-    itemCounter.innerHTML = itemCount;
-    console.log("naam: ", items[2][0]);
-    console.log("prijs: ", items[2][1]);
-    console.log("beschrijving: ", items[2][3]);
-    console.log("beschikbaar: ", items[2][4]);
-    console.log("--------------------");
-    
-    const li = document.createElement("li");
-    const winkelmandjeContent = document.createTextNode(items[2][0]);
-    li.appendChild(winkelmandjeContent);
-    li.classList.add('item3');
-    document.getElementById("winkelmandjeContent").appendChild(li);
-};
 
-function remove1FromTissuebox(){
+function removeFromTissuebox() {
     const items = document.getElementsByClassName("item1");
     itemCount--;
-    if(itemCount < 0){
+    if (itemCount < 0) {
         itemCount = 0;
     }
     itemCounter.innerHTML = itemCount;
@@ -90,34 +66,17 @@ function remove1FromTissuebox(){
             ul.removeChild(item);
         }
     }
-}
-function remove2FromTissuebox(){
-    const items = document.getElementsByClassName("item2");
-    itemCount--;
-    if(itemCount < 0){
-        itemCount = 0;
-    }
-    itemCounter.innerHTML = itemCount;
-    if (items.length > 0) {
-        const item = items[0];
-        const ul = document.getElementById("winkelmandjeContent");
-        if (ul.contains(item)) {
-            ul.removeChild(item);
+};
+
+let observer = new IntersectionObserver(
+        function(entries){
+            if(entries[0].isIntersecting === true){
+                document.getElementsByTagName("main")[0].classList.add("a-popup");
+                observer.disconnect;
+            }
+        }, {
+            threshold: 0.25,
         }
-    }
-}
-function remove3FromTissuebox(){
-    const items = document.getElementsByClassName("item3");
-    itemCount--;
-    if(itemCount < 0){
-        itemCount = 0;
-    }
-    itemCounter.innerHTML = itemCount;
-    if (items.length > 0) {
-        const item = items[0];
-        const ul = document.getElementById("winkelmandjeContent");
-        if (ul.contains(item)) {
-            ul.removeChild(item);
-        }
-    }
-}
+    );
+
+observer.observe(document.getElementsByTagName("main")[0]);
