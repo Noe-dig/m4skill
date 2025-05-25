@@ -22,13 +22,18 @@ for (let i = 0; i < items.length; i++) {
 
 items.forEach((product, i) => {
     const clone = productDummy.cloneNode(true);
+    const productName = clone.querySelector(".itemNaam");
     const productImage = clone.querySelector(".cards__product-image");
     const productPrice = clone.querySelector(".cards__price");
     const productRating = clone.querySelector(".cards__rating");
+
     clone.setAttribute("id", "product_" + i);
+
+    productName.innerText = product[0];
     productImage.setAttribute("src",product[3]);
     productPrice.textContent = "€"+product[1];
     productRating.textContent = product[2]+"/5";
+
     const btn = clone.querySelector(".addButton");
     btn.setAttribute('onclick','addToTissuebox('+i+')');
     productContainer.appendChild(clone);
@@ -39,34 +44,63 @@ function addToTissuebox(i) {
     itemCount++;
     console.log(itemCount);
     itemCounter.innerHTML = itemCount;
-    console.log("naam: ", items[i][0]);
-    console.log("prijs: ", items[i][1]);
-    console.log("beschrijving: ", items[i][4]);
-    console.log("beschikbaar: ", items[i][5]);
-    console.log("--------------------");
+    // console.log("naam: ", items[i][0]);
+    // console.log("prijs: ", items[i][1]);
+    // console.log("beschrijving: ", items[i][4]);
+    // console.log("beschikbaar: ", items[i][5]);
+    // console.log("--------------------");
 
     const li = document.createElement("li");
     const winkelmandjeContent = document.createTextNode(items[i][0]);
     li.appendChild(winkelmandjeContent);
     li.classList.add('item1');
     document.getElementById("winkelmandjeContent").appendChild(li);
+    
+    const removeBtn = document.createElement("button");
+    removeBtn.innerHTML = "<i class='fa-solid fa-trash-can'></i>";
+    removeBtn.setAttribute('class','removeButton')
+    removeBtn.onclick = function() {
+        removeFromTissuebox(items[i][0]);
+    };
+
+    li.appendChild(removeBtn);
+    document.getElementById("winkelmandjeContent").appendChild(li);
 };
 
-function removeFromTissuebox() {
-    const items = document.getElementsByClassName("item1");
-    itemCount--;
+// function removeFromTissuebox() {
+//     const items = document.getElementsByClassName("item1");
+//     itemCount--;
+//     if (itemCount < 0) {
+//         itemCount = 0;
+//     }
+//     itemCounter.innerHTML = itemCount;
+//     if (items.length > 0) {
+//         const item = items[i];
+//         const ul = document.getElementById("winkelmandjeContent");
+//         if (ul.contains(items[0] === itemNameIndex)){
+//             ul.removeChild(item);
+//         }
+//     }
+// };
+
+function removeFromTissuebox(itemName) {
+        itemCount--;
     if (itemCount < 0) {
         itemCount = 0;
     }
-    itemCounter.innerHTML = itemCount;
-    if (items.length > 0) {
-        const item = items[0];
-        const ul = document.getElementById("winkelmandjeContent");
-        if (ul.contains(item)) {
-            ul.removeChild(item);
+    const items = document.getElementsByClassName("item1");
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].textContent === itemName) {
+            items[i].parentNode.removeChild(items[i]); // remove the matching item
+            itemCount--;
+            if (itemCount < 0) {
+                itemCount = 0;
+            }
+            itemCounter.innerHTML = itemCount;
+            break; // stop after removing one match
         }
     }
-};
+}
 
 let observer = new IntersectionObserver(
         function(entries){

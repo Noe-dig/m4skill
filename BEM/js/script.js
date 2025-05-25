@@ -11,6 +11,8 @@ const data = [
     "./infinite_img/teto10.png"
 ];
 
+
+
 const audio = document.getElementById("myAudio");
 
 let imgCount = 0;
@@ -21,8 +23,11 @@ function fetchImage() {
   if (imgCount < 1000) {
     setTimeout(() => {
       for (let i = 0; i < 10; i++) {
+        const randomSize = Math.random()*30+"rem";
+        console.log(randomSize);
         const image = document.createElement("img");
-        image.src = data[i]; // fixed: no .src
+        image.src = data[i];
+        image.style.width = randomSize;
         rootElement.appendChild(image);
       }
       imgCount += 5;
@@ -48,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   let observer = new IntersectionObserver(handleIntersect, options);
-  observer.observe(loader); // fixed: loader is now defined
+  observer.observe(loader);
 });
 
 window.onload = function() {

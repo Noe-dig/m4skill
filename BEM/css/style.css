@@ -166,7 +166,7 @@ body{
                 height: 10rem;
                 font-size: 2rem;
                 font-weight: bold;
-                width:70%;
+                width:100%;
             }
             .addButton:hover{
                 cursor: pointer;
@@ -176,10 +176,11 @@ body{
                 background-color: #d00;
                 border-radius: 1.2rem;
                 border: none;
-                height: 10rem;
+                height: 90%;
                 font-size: 2rem;
                 font-weight: bold;  
-                width: 25%;
+                margin-left: 2rem;
+                width: 15%;
             }
             .removeButton:hover{
                 cursor:pointer;
