@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onepager</title>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lacquer&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <section>
+            <h1 class="lacquer-regular">
+                Gideon Lakeman
+            </h1>
+            <div class="header__gieter"></div>      
+        </section>
+        <nav class="header__swoosh">
+            <a class="nav__button" href="#main__zelf-section">
+                <h3 class="lacquer-regular">
+                    Over mij
+                </h3>
+            </a>
+            <a class="nav__button" href="#main__contact-section">
+                <h3 class="lacquer-regular">
+                    Contact
+                </h3>
+            </a>
+        </nav>
+    </header>
+    <main>
+        <section class="main__section main__zelf-section" id="main__zelf-section">
+            <div class="about-me_1">
+                <h4 class="lacquer-regular">
+                    Mijn naam is Gideon Lakeman,
+                    Ik ben 19 jaar.<br>
+                    Mijn skills liggen her en der,
+                    van talen en wiskunde naar modelbouw tot agricultuur.<br>
+                    Je zou me een visionair kunnen noemen, of autist,<br> 
+                    Beide kloppen wel.
+                </h4>
+            </div>
+            <div class="about-me_2">
+                <h4></h4>  
+            </div>
+        </section>
+
+        <section class="main__contact-section" id="main__contact-section">
+            <h3 class="contact-text">
+                Neem contact met mij op
+            </h3>
+            <form class="contact__form" action="javascript:sendMail()">
+                <input type="hidden" name="send_to_mail" value="spamlakeman@gmail.com"/>
+                <input class="contact__input form-item" type="text" name="naam" placeholder="Naam" required/>
+                <input class="contact__input form-item" type="text" name="email" placeholder="Uw email" required/>
+                <textarea class="contact__textarea form-item" name="bericht" placeholder="Bericht" required></textarea>
+                <button class="contact__button form-item" type="submit">Verstuur</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <button class="to-top__button" onclick="nav_top()">
+            <h2 class="lacquer-regular">
+                ^
+            </h2>
+        </button>
+    </footer>
+</body>
+</html>
